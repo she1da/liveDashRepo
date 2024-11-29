@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import List from "./components/List";
+import SearchBox from "./components/SearchBox";
 
 function App() {
+  const [keyword, setKeyword] = useState("");
+  const onSearch = (e) => {
+    setKeyword(e.target.value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" flex items-center justify-center">
+      <div className="p-4">
+        <div className="flow-root ...">
+          <div className="my-4 ...">
+            <SearchBox keyword={keyword} onSearch={onSearch} />
+          </div>
+        </div>
+        <div className="flow-root ...">
+          <div className="my-4 ...">
+            <List keyword={keyword} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
